@@ -13,7 +13,7 @@ def load_data_from_sql():
     try:
         df = pd.read_sql("SELECT * FROM orders", conn)
     except:
-        df_excel = pd.read_excel("SupplyChainData.xlsx", parse_dates=['Date'])
+        df_excel = pd.read_csv("data.csv", parse_dates=['Date'])
         df_excel.to_sql('orders', conn, if_exists='replace', index=False)
         df = pd.read_sql("SELECT * FROM orders", conn)
     conn.close()
